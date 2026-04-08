@@ -30,7 +30,9 @@ class EnrollmentController extends Controller
 
     public function store(StoreEnrollmentRequest $request): \Illuminate\Http\RedirectResponse
     {
-        Enrollment::query()->create($request->validated());
+        Enrollment::query()->create(array_merge($request->validated(), [
+            'enrolled_by' => auth()->id(),
+        ]));
 
         return redirect()->route('enrollments.index')
             ->with('success', 'Enrollment created successfully.');

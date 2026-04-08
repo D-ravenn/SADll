@@ -86,21 +86,7 @@
                         </div>
 
 
-                        {{-- Enrolled By --}}
-                        <div class="mb-4">
-                            <label for="enrolled_by" class="form-label">Enrolled By</label>
-                            <select id="enrolled_by" name="enrolled_by" class="form-control @error('enrolled_by') is-invalid @enderror">
-                                <option value="">— Select Staff —</option>
-                                @foreach ($users as $user)
-                                    <option value="{{ $user->id }}" {{ old('enrolled_by', $enrollment->enrolled_by) == $user->id ? 'selected' : '' }}>
-                                        {{ $user->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            @error('enrolled_by')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
+
 
                         <div class="flex gap-2 justify-end">
                             <a href="{{ route('enrollments.index') }}" class="ti-btn ti-btn-secondary !py-1 !px-4 !font-medium">

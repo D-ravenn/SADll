@@ -21,7 +21,6 @@ class UpdateEnrollmentRequest extends FormRequest
             'subject_id'        => ['required', 'exists:subjects,id'],
             'Enrollment_status' => ['required', 'in:enrolled,pending,dropped'],
             'enrolled_at'       => ['nullable', 'date'],
-            'enrolled_by'       => ['nullable', 'exists:users,id'],
         ];
     }
 
