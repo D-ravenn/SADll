@@ -1250,18 +1250,31 @@
  <script src="{{asset('backend/assets/libs/jsvectormap/maps/world-merc.js')}}"></script>
  <script src="{{asset('backend/assets/js/us-merc-en.js')}}"></script>
 
-  <!-- CRM-Dashboard -->
-  <script src="{{asset('backend/assets/js/index.js')}}"></script>
 
-  
+  @stack('scripts')
+
   <!-- Custom-Switcher JS -->
   <script src="{{asset('backend/assets/js/custom-switcher.js')}}"></script>
 
   <!-- Custom JS -->
   <script src="{{asset('backend/assets/js/custom.js')}}"></script>
 
-  @stack('scripts')
+  {{-- Auto-dismiss flash alerts globally --}}
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.alert').forEach(function (alert) {
+        setTimeout(function () {
+          alert.style.transition = 'opacity 0.6s ease';
+          alert.style.opacity = '0';
+          setTimeout(function () {
+            alert.remove();
+          }, 600);
+        }, 4000);
+      });
+    });
+  </script>
 
 </body>
+
 
 </html>

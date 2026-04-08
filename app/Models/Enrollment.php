@@ -37,4 +37,9 @@ class Enrollment extends Model
     {
         return $this->belongsTo(Subject::class);
     }
+
+    public function enrolledBy(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'enrolled_by');
+    }
 }

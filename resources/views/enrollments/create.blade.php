@@ -21,10 +21,97 @@
                         </a>
                     </li>
                     <li class="text-[12px]">
-                        <a class="flex items-center text-textmuted" href="javascript:void(0);">Create</a>
+                        <a class="flex items-center text-textmuted" href="javascript:void(0);">New Enrollment</a>
                     </li>
                 </ol>
             </nav>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-12 gap-6">
+        <div class="xl:col-span-8 col-span-12 xl:col-start-3">
+            <div class="box custom-box">
+                <div class="box-header">
+                    <div class="box-title">Enrollment Details</div>
+                </div>
+                <div class="box-body">
+                    <form action="{{ route('enrollments.store') }}" method="POST">
+                        @csrf
+
+                        {{-- Student --}}
+                        <div class="mb-4">
+                            <label for="user_id" class="form-label">Student <span class="text-danger">*</span></label>
+                            <select id="user_id" name="user_id" class="form-control @error('user_id') is-invalid @enderror">
+                                <option value="">— Select Student —</option>
+                                @foreach ($users as $user)
+                                    <option value="{{ $user->id }}" {{ old('user_id') == $user->id ? 'selected' : '' }}>
+                                        {{ $user->name }} ({{ $user->email }})
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('user_id')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        {{-- Subject --}}
+                        <div class="mb-4">
+                            <label for="subject_id" class="form-label">Subject <span class="text-danger">*</span></label>
+                            <select id="subject_id" name="subject_id" class="form-control @error('subject_id') is-invalid @enderror">
+                                <option value="">— Select Subject —</option>
+                                @foreach ($subjects as $subject)
+                                    <option value="{{ $subject->id }}" {{ old('subject_id') == $subject->id ? 'selected' : '' }}>
+                                        {{ $subject->name }} ({{ $subject->code }})
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('subject_id')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        {{-- Status --}}
+                        <div class="mb-4">
+                            <label for="Enrollment_status" class="form-label">Status <span class="text-danger">*</span></label>
+                            <select id="Enrollment_status" name="Enrollment_status" class="form-control @error('Enrollment_status') is-invalid @enderror">
+                                <option value="">— Select Status —</option>
+                                <option value="enrolled" {{ old('Enrollment_status') === 'enrolled' ? 'selected' : '' }}>Enrolled</option>
+                                <option value="pending" {{ old('Enrollment_status') === 'pending' ? 'selected' : '' }}>Pending</option>
+                                <option value="dropped" {{ old('Enrollment_status') === 'dropped' ? 'selected' : '' }}>Dropped</option>
+                            </select>
+                            @error('Enrollment_status')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+
+                        {{-- Enrolled By --}}
+                        <div class="mb-4">
+                            <label for="enrolled_by" class="form-label">Enrolled By</label>
+                            <select id="enrolled_by" name="enrolled_by" class="form-control @error('enrolled_by') is-invalid @enderror">
+                                <option value="">— Select Staff —</option>
+                                @foreach ($users as $user)
+                                    <option value="{{ $user->id }}" {{ old('enrolled_by') == $user->id ? 'selected' : '' }}>
+                                        {{ $user->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('enrolled_by')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="flex gap-2 justify-end">
+                            <a href="{{ route('enrollments.index') }}" class="ti-btn ti-btn-secondary !py-1 !px-4 !font-medium">
+                                Cancel
+                            </a>
+                            <button type="submit" class="ti-btn ti-btn-primary !py-1 !px-4 !font-medium">
+                                Save Enrollment
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

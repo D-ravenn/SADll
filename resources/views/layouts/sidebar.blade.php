@@ -1,13 +1,13 @@
 
         <!-- Start::main-sidebar-header -->
         <div class="main-sidebar-header">
-            <a href="index.html" class="header-logo">
-                <img src="../assets/images/brand-logos/desktop-logo.png" alt="logo" class="desktop-logo">
-                <img src="../assets/images/brand-logos/toggle-logo.png" alt="logo" class="toggle-logo">
-                <img src="../assets/images/brand-logos/desktop-dark.png" alt="logo" class="desktop-dark">
-                <img src="../assets/images/brand-logos/toggle-dark.png" alt="logo" class="toggle-dark">
-                <img src="../assets/images/brand-logos/desktop-white.png" alt="logo" class="desktop-white">
-            </a>
+            <a href="{{ route('dashboard') }}" class="header-logo">
+    <img src="{{ asset('backend/assets/images/brand-logos/favicon.ico') }}" alt="logo" class="desktop-logo">
+    <img src="{{ asset('backend/assets/images/brand-logos/favicon.ico') }}" alt="logo" class="toggle-logo">
+    <img src="{{ asset('backend/assets/images/brand-logos/favicon.ico') }}" alt="logo" class="desktop-dark">
+    <img src="{{ asset('backend/assets/images/brand-logos/favicon.ico') }}" alt="logo" class="toggle-dark">
+    <img src="{{ asset('backend/assets/images/brand-logos/favicon.ico') }}" alt="logo" class="desktop-white">
+</a>
         </div>
         <!-- End::main-sidebar-header -->
 

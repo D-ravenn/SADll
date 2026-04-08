@@ -29,6 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('enrollments', EnrollmentController::class);
 
     Route::resource('subjects', SubjectController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
+
 });
 
 require __DIR__.'/auth.php';
